@@ -19,7 +19,7 @@ app.post('/usuarios', async (req, res) => {
             setor: z.string().min(1).max(10, "Deve conter no máximo 10 caracteres"),
             lider: z.string().min(1).max(15, "Deve conter no máixmo 15 caracteres"),
             posicao: z.string().min(1).max(20, "Deve conter no máixmo 20 caracteres"),
-            telefone: z.string().min(1).max(20, "Deve conter no máixmo 20 caracteres"),
+            telefone: z.string().min(1).max(20, "Deve conter no máixmo 15 caracteres"),
         })
 
         const data = userSchema.parse(req.body)
@@ -46,7 +46,7 @@ app.post('/usuarios', async (req, res) => {
         return res.status(500).send({ message: "Erro ao tentar criar usuário" })
     }
 });
-
+// função para trazer as informações enviadas pelo post
 app.get('/usuarios', async (req, res) => {
 
     console.log(req)
@@ -56,6 +56,7 @@ app.get('/usuarios', async (req, res) => {
     res.status(200).json(users)
 });
 
+// função para atualizar informações.
 app.put('/usuarios/:id', async (req, res) => {
 
     await prisma.user.update({
@@ -74,6 +75,7 @@ app.put('/usuarios/:id', async (req, res) => {
     res.status(201).json(req.body)
 })
 
+// função para deletar as informações no banco e no front em tempo real
 app.delete('/usuarios/:id', async (req, res) => {
 
     await prisma.user.delete({
