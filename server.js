@@ -15,11 +15,11 @@ app.post('/usuarios', async (req, res) => {
 
     try {
         const userSchema = z.object({
-            nome: z.string().min(1).max(20, "Deve conter no máixmo 20 caracteres"),
-            setor: z.string().min(1).max(10, "Deve conter no máximo 10 caracteres"),
-            lider: z.string().min(1).max(15, "Deve conter no máixmo 15 caracteres"),
-            posicao: z.string().min(1).max(20, "Deve conter no máixmo 20 caracteres"),
-            telefone: z.string().min(1).max(20, "Deve conter no máixmo 15 caracteres"),
+            nome: z.string().min(1).max(30, "Deve conter no máixmo 30 caracteres"),
+            setor: z.string().min(1).max(30, "Deve conter no máximo 30 caracteres"),
+            lider: z.string().min(1).max(20, "Deve conter no máixmo 20 caracteres"),
+            posicao: z.string().min(1).max(30, "Deve conter no máixmo 30 caracteres"),
+            telefone: z.string().min(1).max(15, "Deve conter no máixmo 15 caracteres"),
         })
 
         const data = userSchema.parse(req.body)
